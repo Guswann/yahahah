@@ -20,6 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/category', CategoryController::class);
-Route::apiResource('/product', ProductController::class);
+Route::prefix('/v1')->group(function () {
+    Route::apiResource('/category', CategoryController::class);
+    Route::apiResource('/product', ProductController::class);
+    
+});
 
